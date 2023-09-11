@@ -57,6 +57,7 @@ fn main() {
 
     for i in 1..=num_files {
         let path = Path::new(destination_dir).join(format!("{}.parquet", i));
+        println!("Writing file: {:?}", path);
         let file = File::create(path).expect("Creating file");
         let mut writer = ArrowWriter::try_new(file, sample_batch.schema(), Some(props.clone())).unwrap();
 
@@ -69,4 +70,3 @@ fn main() {
     }
 
 }
-
